@@ -21,4 +21,8 @@ public class EmployeeController {
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
+    @GetMapping("/{employeeId}")
+    public Employee getEmployeeById(@PathVariable String employeeId) {
+        return employeeService.getEmployeeById(employeeId);
+    }
 }
