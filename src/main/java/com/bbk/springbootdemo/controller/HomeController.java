@@ -1,9 +1,6 @@
 package com.bbk.springbootdemo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import com.bbk.springbootdemo.model.User;
 
@@ -42,10 +39,36 @@ public class HomeController {
         return "This is the Path Variable Response! " + id1 + " " + id2;
     }
 
-//    @GetMapping("/user/{id1}/{id2}")
-//    public String pathVariable3(@PathVariable String id1,
-//                                @PathVariable("id2") String name) {
-//        return "This is the Path Variable Response! " + id1 + ":" + name;
-//    }
+    // Request Parameter Method
+    @GetMapping("/requestParam1")
+    public String requestParameter1(@RequestParam String name) {
+        return "This is the Request Parameter Response! " + name;
+    }
+
+
+    @GetMapping("/requestParam2")
+    public String requestParameter2(@RequestParam("name") String name,
+                                    @RequestParam("emailId") String emailId) { // Parameter is Case Sensitive
+        return "This is the Request Parameter Response! " + name + "and email id is : " + emailId;
+    }
+
+    @GetMapping("/requestParam3")
+    public String requestParameter3(@RequestParam("name") String name,
+                                    @RequestParam(name = "email") String emailId) { // Parameter is not Case Sensitive
+        return "This is the Request Parameter Response! " + name + "and email id is : " + emailId;
+    }
+
+
+    @GetMapping("/requestParam4")
+    public String requestParameter4(@RequestParam("name") String name,
+                                    @RequestParam(name = "email", required = false) String emailId) { // Parameter is not Case Sensitive
+        return "This is the Request Parameter Response! " + name + "and email id is : " + emailId;
+    }
+
+    @GetMapping("/requestParam5")
+    public String requestParameter5(@RequestParam("name") String name,
+                                    @RequestParam(name = "email", required = false, defaultValue = "") String emailId) { // Parameter is not Case Sensitive
+        return "This is the Request Parameter Response! " + name + "and email id is : " + emailId;
+    }
 }
 
