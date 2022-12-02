@@ -20,7 +20,7 @@ public class HomeController {
     }
 
     //  @RequestMapping(value = "/user", method = RequestMethod.GET)
-    // Stearo Type Methods
+    // Stereo Type Methods
     @GetMapping("/user")
     public User user() {
         User user = new User();
@@ -33,9 +33,19 @@ public class HomeController {
 
     // Path Variable Method
     @GetMapping("/user/{id}")
-    public String pathVariable(@PathVariable("id") String id) {
+    public String pathVariable1(@PathVariable("id") String id) {
         return "This is the Path Variable Response! " + id;
     }
 
+    @GetMapping("/user/{id1}/{id2}")
+    public String pathVariable2(@PathVariable("id1") String id1, @PathVariable("id2") String id2) {
+        return "This is the Path Variable Response! " + id1 + " " + id2;
+    }
+
+//    @GetMapping("/user/{id1}/{id2}")
+//    public String pathVariable3(@PathVariable String id1,
+//                                @PathVariable("id2") String name) {
+//        return "This is the Path Variable Response! " + id1 + ":" + name;
+//    }
 }
 
