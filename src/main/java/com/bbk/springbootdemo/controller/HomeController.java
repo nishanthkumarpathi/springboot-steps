@@ -1,5 +1,6 @@
 package com.bbk.springbootdemo.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,9 @@ public class HomeController {
         return "This is the Default Root Response!";
     }
 
-    @RequestMapping("/user")
+    //  @RequestMapping(value = "/user", method = RequestMethod.GET)
+    // Stearo Type Methods
+    @GetMapping("/user")
     public User user() {
         User user = new User();
         user.setId("1");
