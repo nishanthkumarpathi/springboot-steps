@@ -1,5 +1,6 @@
 package com.bbk.springbootdemo.service;
 
+import com.bbk.springbootdemo.error.EmployeeNotFoundException;
 import com.bbk.springbootdemo.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .stream()
                 .filter(employee -> employee.getEmployeeId().equals(employeeId))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Employee not found" + employeeId));
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found Custom Error: " + employeeId));
     }
 }
