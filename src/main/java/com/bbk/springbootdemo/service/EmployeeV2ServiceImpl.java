@@ -34,12 +34,29 @@ public class EmployeeV2ServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getAllEmployees() {
-        return null;
+        List<EmployeeEntity> employeeEntityList
+                = employeeRepository.findAll();
+
+        List<Employee> employees
+                = employeeEntityList
+                .stream()
+                .map(employeeEntity -> {
+                    Employee employee = new Employee();
+                    BeanUtils.copyProperties(employeeEntity, employee);
+                    return employee;
+                })
+                .collect(Collectors.toList());
+
+        return employees;
     }
 
     @Override
-    public Employee getEmployeeById(String employeeId) {
-        return null;
+    public Employee getEmployeeById(String id) {
+        EmployeeEntity employeeEntity
+                = employeeRepository.findById(id).get();
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeEntity,employee);
+        return employee;
     }
 
     @Override
