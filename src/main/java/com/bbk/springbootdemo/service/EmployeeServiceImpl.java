@@ -1,8 +1,9 @@
 package com.bbk.springbootdemo.service;
 
-import com.bbk.springbootdemo.error.EmployeeNotFoundException;
 import com.bbk.springbootdemo.model.Employee;
 import org.springframework.stereotype.Service;
+
+import com.bbk.springbootdemo.error.EmployeeNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
     @Override
-    public Employee getEmployeeById(String employeeId) {
+    public Employee getEmployeeById(String id) {
         return employees
                 .stream()
-                .filter(employee -> employee.getEmployeeId().equals(employeeId))
+                .filter(employee -> employee.getEmployeeId().equalsIgnoreCase(id))
                 .findFirst()
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found Custom Error: " + employeeId));
+                .orElseThrow(() -> new EmployeeNotFoundException("" +
+                        "Employee not found with Id: " + id));
     }
+
+    // Test 1: You can use "EmployeeNotFoundException" for Testing
+    // Test 2: "RuntimeException" for Testing for Generic Error Message
+
+
 }

@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import com.bbk.springbootdemo.service.EmployeeService;
+import com.bbk.springbootdemo.service.EmployeeServiceImpl;
+import com.bbk.springbootdemo.error.*;
 
 import com.bbk.springbootdemo.model.ErrorMessage;
 
@@ -20,5 +23,15 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
                 = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
         return message;
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage genericExceptionHandler(Exception exception) {
+        ErrorMessage message
+                = new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+        return message;
+    }
+
 
 }
