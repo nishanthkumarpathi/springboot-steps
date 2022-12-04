@@ -1,14 +1,26 @@
 
 
+31. Create Employee POST methods in JPA
 
-30. Setting up JPA and Different Classes.
+Here we are going to write two Implementations for the EmployeeService.
 
-* In this we will add JPA, H2 Database Dependencies. I
-* In Class, these are already there.
-* We are changing application.properties with Properties
-  * Server Port
-  * Spring H2 Console Enabled
-  * Spring Data Source URL, Username, Password, Driver Class Name
-  * Spring JPA Database Platform
-  * Spring JPA Hibernate DDL Auto to Update
+* EmployeeServiceImpl.java
+* EmployeeV2ServiceImpl.java
+
+After Implementing them both "Employee Controller", will not which one to call.
+
+There will be two Beans.
+
+    @Autowired
+    private EmployeeService employeeService;
+
+You can use Qualifier Annotations.
+
+----------------------------
+
+At the time of execution, you can go to H2 Console and see the data.
+
+    http://localhost:8080/h2-console
+
+* Perform the post method and check the data in the H2 Console.
 
