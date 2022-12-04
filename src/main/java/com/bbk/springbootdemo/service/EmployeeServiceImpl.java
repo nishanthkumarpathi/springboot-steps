@@ -40,5 +40,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     // Test 1: You can use "EmployeeNotFoundException" for Testing
     // Test 2: "RuntimeException" for Testing for Generic Error Message
 
+    @Override
+    public String deleteEmployeeById(String employeeId) {
+        Employee employee
+                = employees
+                .stream()
+                .filter(e -> e.getEmployeeId().equalsIgnoreCase(employeeId))
+                .findFirst()
+                .get();
+
+        employees.remove(employee);
+        return "Employee Deleted Successfully" + employeeId;
+
+    }
+
+
+
 
 }
