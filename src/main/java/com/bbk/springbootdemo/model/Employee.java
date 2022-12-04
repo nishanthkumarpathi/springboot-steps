@@ -1,5 +1,8 @@
 package com.bbk.springbootdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"department"})
 public class Employee {
 
     private String employeeId;
